@@ -1,0 +1,27 @@
+**EJS - template engine (motor de templates, que permite exibição de arquivos HTML pelo NodeJS). Sintaxe: npm install ejs --save
+
+*** Instrução para o express entender qual o motor de template (tempolate engine), no caso o EJS: app.set("view engine", "ejs");
+
+<%= var %> --> Tag especial do EJS, para passar variáveis do back pro front
+    - pode colocar códigos javascript, como condicionais <% if(condition){ // } %> ou iterações, como <% array.forEach(function..) %>
+
+
+*** Partials = parte de layouts que pode ser reutilizado em outras views. Sintaxe para uso em qualquer parte do EJS/html: <%- include ("caminho/arquivo.ejs") %>
+
+***Metódos do formulário --> GET: utiliza os query params, via url; POST: dados são enviados dentro da requisição, ficando fora da url
+
+***body-parser --> responsável por traduzir os dados enviados do formulário em JS. Sintaxe: npm install body-parser --save
+
+***Sequelize --> ORM para conexão e manipulção em muitos DB SQL. Sintaxe: npm install --save sequelize // com o mysql -> npm install --save mysql2
+- ALTER USER "root"@"localhost" IDENTIFIED WITH mysql_native_password BY "root"; precisa utilizar esse comando na linha de comando para sanar falha de protocolo do mysql com o Sequelize
+
+    - INSERT: <modelObject>.create({
+        coluna1: <valor1>,
+        coluna2: <valo2>,
+    }).then((perguntas) => {
+        //debug, ou rediretc
+    })
+
+    <modelObject>.findAll({ raw: true, order: [["<coluna>", "DESC ou ASC"]]}).then((perguntas) => { //"raw" signiifica ''cru'', e traz só os obj com as colunas
+        console.log(perguntas);
+    })
